@@ -1,14 +1,9 @@
-﻿using System.ComponentModel.DataAnnotations;
-
-namespace Amazon.Services.CouponApi.Model
+﻿namespace Amazon.Services.CouponApi.Model.Dto
 {
-    public class Coupon
+    public class CouponDto
     {
-        [Key]
         public int CouponId { get; set; }
-        [Required]
         public string CouponCode { get; set; }
-        [Required]
         public double DiscountAmount { get; set; }
         public int MinAmount { get; set; }
     }
