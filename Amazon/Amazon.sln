@@ -11,7 +11,9 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Integration", "Integration"
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Services", "Services", "{3011AA5B-F28F-4569-A040-0533238CCE79}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Amazon.Services.CouponApi", "Amazon.Services.CouponApi\Amazon.Services.CouponApi.csproj", "{7B00B69E-C1FC-4768-8190-E0DDCD8AF65C}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Amazon.Services.CouponApi", "Amazon.Services.CouponApi\Amazon.Services.CouponApi.csproj", "{7B00B69E-C1FC-4768-8190-E0DDCD8AF65C}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Amazon.Web", "Amazon.Web\Amazon.Web.csproj", "{7F169BE9-B5B6-48CB-8B31-5EA0C2D8874E}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -23,12 +25,17 @@ Global
 		{7B00B69E-C1FC-4768-8190-E0DDCD8AF65C}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{7B00B69E-C1FC-4768-8190-E0DDCD8AF65C}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{7B00B69E-C1FC-4768-8190-E0DDCD8AF65C}.Release|Any CPU.Build.0 = Release|Any CPU
+		{7F169BE9-B5B6-48CB-8B31-5EA0C2D8874E}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{7F169BE9-B5B6-48CB-8B31-5EA0C2D8874E}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{7F169BE9-B5B6-48CB-8B31-5EA0C2D8874E}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{7F169BE9-B5B6-48CB-8B31-5EA0C2D8874E}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
 	EndGlobalSection
 	GlobalSection(NestedProjects) = preSolution
 		{7B00B69E-C1FC-4768-8190-E0DDCD8AF65C} = {3011AA5B-F28F-4569-A040-0533238CCE79}
+		{7F169BE9-B5B6-48CB-8B31-5EA0C2D8874E} = {FE89B2BA-A5B6-4A4C-9FDC-51D41B2D22A8}
 	EndGlobalSection
 	GlobalSection(ExtensibilityGlobals) = postSolution
 		SolutionGuid = {35084573-4F70-4D12-8F5D-D02C5DA8FBB6}
