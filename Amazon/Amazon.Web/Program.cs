@@ -1,9 +1,21 @@
+
+
+using Amazon.Web.Service.IService;
+using Amazon.Web.Utility;
+
 var builder = WebApplication.CreateBuilder(args);
 
 // Add services to the container.
 builder.Services.AddControllersWithViews();
+builder.Services.AddHttpClient();
+builder.Services.AddHttpClient<ICouponService, ICouponService>();   
+
+SD.CouponAPIBase = builder.Configuration["ServiceUrls:CouponAPI"];
+
 
 var app = builder.Build();
+
+
 
 // Configure the HTTP request pipeline.
 if (!app.Environment.IsDevelopment())
