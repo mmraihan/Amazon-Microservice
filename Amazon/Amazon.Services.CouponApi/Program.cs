@@ -1,5 +1,8 @@
 using Amazon.Services.CouponAPI.Data;
+using Amazon.Services.CouponAPI.Helpers;
+using AutoMapper;
 using Microsoft.EntityFrameworkCore;
+using System.Reflection;
 
 var builder = WebApplication.CreateBuilder(args);
 
@@ -10,6 +13,10 @@ builder.Services.AddDbContext<AppDbContext>(option =>
 {
     option.UseSqlServer(builder.Configuration.GetConnectionString("DefaultConnection"));
 });
+
+IMapper mapper = MappingConfig.RegisterMaps().CreateMapper();
+builder.Services.AddSingleton(mapper);
+builder.Services.AddAutoMapper(Assembly.GetEntryAssembly());
 
 #endregion
 
