@@ -1,19 +1,17 @@
 ﻿
 Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio Version 17
-VisualStudioVersion = 17.6.33801.468
+VisualStudioVersion = 17.9.34902.65
 MinimumVisualStudioVersion = 10.0.40219.1
-Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "FrontEnd", "FrontEnd", "{FE89B2BA-A5B6-4A4C-9FDC-51D41B2D22A8}"
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "FrontEnd", "FrontEnd", "{D37CD008-8AE3-4710-AD59-325677EF7728}"
 EndProject
-Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Gateway", "Gateway", "{9D49C9FB-C764-4D9A-AD16-B7F773F6BB8D}"
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Gateway", "Gateway", "{5F005E2C-65FF-4261-9078-0F65AFDA28A3}"
 EndProject
-Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Integration", "Integration", "{529739FC-D27B-4FD9-9DB1-09EB90B1EF65}"
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Integration", "Integration", "{2BD00C9B-B02A-4F4E-BD9A-183636046E49}"
 EndProject
-Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Services", "Services", "{3011AA5B-F28F-4569-A040-0533238CCE79}"
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Services", "Services", "{F7F88DEA-1683-422F-A788-3158DC0FF924}"
 EndProject
-Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Amazon.Services.CouponApi", "Amazon.Services.CouponApi\Amazon.Services.CouponApi.csproj", "{7B00B69E-C1FC-4768-8190-E0DDCD8AF65C}"
-EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Amazon.Web", "Amazon.Web\Amazon.Web.csproj", "{7F169BE9-B5B6-48CB-8B31-5EA0C2D8874E}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Amazon.Services.CouponAPI", "Amazon.Services.CouponAPI\Amazon.Services.CouponAPI.csproj", "{CEDD9DB0-CCEB-4B23-BC54-1B523778A6C2}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -21,23 +19,18 @@ Global
 		Release|Any CPU = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(ProjectConfigurationPlatforms) = postSolution
-		{7B00B69E-C1FC-4768-8190-E0DDCD8AF65C}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{7B00B69E-C1FC-4768-8190-E0DDCD8AF65C}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{7B00B69E-C1FC-4768-8190-E0DDCD8AF65C}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{7B00B69E-C1FC-4768-8190-E0DDCD8AF65C}.Release|Any CPU.Build.0 = Release|Any CPU
-		{7F169BE9-B5B6-48CB-8B31-5EA0C2D8874E}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{7F169BE9-B5B6-48CB-8B31-5EA0C2D8874E}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{7F169BE9-B5B6-48CB-8B31-5EA0C2D8874E}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{7F169BE9-B5B6-48CB-8B31-5EA0C2D8874E}.Release|Any CPU.Build.0 = Release|Any CPU
+		{CEDD9DB0-CCEB-4B23-BC54-1B523778A6C2}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{CEDD9DB0-CCEB-4B23-BC54-1B523778A6C2}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{CEDD9DB0-CCEB-4B23-BC54-1B523778A6C2}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{CEDD9DB0-CCEB-4B23-BC54-1B523778A6C2}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
 	EndGlobalSection
 	GlobalSection(NestedProjects) = preSolution
-		{7B00B69E-C1FC-4768-8190-E0DDCD8AF65C} = {3011AA5B-F28F-4569-A040-0533238CCE79}
-		{7F169BE9-B5B6-48CB-8B31-5EA0C2D8874E} = {FE89B2BA-A5B6-4A4C-9FDC-51D41B2D22A8}
+		{CEDD9DB0-CCEB-4B23-BC54-1B523778A6C2} = {F7F88DEA-1683-422F-A788-3158DC0FF924}
 	EndGlobalSection
 	GlobalSection(ExtensibilityGlobals) = postSolution
-		SolutionGuid = {35084573-4F70-4D12-8F5D-D02C5DA8FBB6}
+		SolutionGuid = {68562050-530C-4EFE-9EED-4928FEC6044A}
 	EndGlobalSection
 EndGlobal

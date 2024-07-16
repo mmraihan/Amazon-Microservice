@@ -1,0 +1,6 @@
+@Amazon.Services.CouponAPI_HostAddress = http://localhost:5183
+
+GET {{Amazon.Services.CouponAPI_HostAddress}}/weatherforecast/
+Accept: application/json
+
+###
