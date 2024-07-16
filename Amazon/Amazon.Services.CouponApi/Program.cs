@@ -32,4 +32,24 @@ app.UseAuthorization();
 
 app.MapControllers();
 
+ApplyMigration();
+
 app.Run();
+
+#region Pending Migration 
+
+// Pending Migration when seed data before update 
+void ApplyMigration()
+{
+    using (var scope = app.Services.CreateScope())
+    {
+        var _db = scope.ServiceProvider.GetRequiredService<AppDbContext>();
+
+        if (_db.Database.GetPendingMigrations().Count() > 0)
+        {
+            _db.Database.Migrate();
+        }
+    }
+}
+#endregion
+
