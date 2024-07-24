@@ -4,11 +4,13 @@ using Amazon.Services.CouponAPI.Models;
 using AutoMapper;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
+using Microsoft.EntityFrameworkCore;
 
 namespace Amazon.Services.CouponAPI.Controllers
 {
-
-    public class CouponAPIController : BaseAPIController
+    [Route("api/coupon")]
+    [ApiController]
+    public class CouponAPIController : ControllerBase
     {
 
         private readonly AppDbContext _db;
@@ -21,6 +23,25 @@ namespace Amazon.Services.CouponAPI.Controllers
             _response = new ResponseDto();
             _mapper = mapper;
         }
+
+        [HttpGet]
+        public ResponseDto Get()
+        {
+            try
+            {
+                var obj = _db.Coupons   ;
+                _response.Result = _mapper.Map<List<CouponDto>>(obj);
+
+            }
+            catch (Exception ex)
+            {
+                _response.IsSuccess = false;
+                _response.Message = ex.Message;
+
+            }
+            return _response;
+        }
+
 
         [HttpGet]
         [Route("GetByCode/{code}")]

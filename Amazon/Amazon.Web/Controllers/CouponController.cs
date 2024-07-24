@@ -1,5 +1,7 @@
-﻿using Amazon.Web.Service;
+﻿using Amazon.Web.Models;
+using Amazon.Web.Service;
 using Microsoft.AspNetCore.Mvc;
+using Newtonsoft.Json;
 
 namespace Amazon.Web.Controllers
 {
@@ -12,7 +14,16 @@ namespace Amazon.Web.Controllers
         }
         public async Task<IActionResult> CouponIndex()
         {
-            return View();
+            List<CouponDto> list = new();
+
+            ResponseDto? response = await _couponService.GetAllCouponsAsync();
+
+            if (response != null && response.IsSuccess)
+            {
+                list =JsonConvert.DeserializeObject<List<CouponDto>>(Convert.ToString( response.Result));
+            }
+
+            return View(list);
         }
     }
 }
