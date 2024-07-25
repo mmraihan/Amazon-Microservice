@@ -17,9 +17,8 @@ builder.Services.AddDbContext<AppDbContext>(option =>
 builder.Services.AddIdentity<ApplicationUser, IdentityRole>().AddEntityFrameworkStores<AppDbContext>()
     .AddDefaultTokenProviders();
 
-//IMapper mapper = MappingConfig.RegisterMaps().CreateMapper();
-//builder.Services.AddSingleton(mapper);
-//builder.Services.AddAutoMapper(Assembly.GetEntryAssembly());
+builder.Services.Configure<JwtOptions>(builder.Configuration.GetSection("ApiSettings:JwtOptions")); //---- JWT----------
+
 
 #endregion
 
