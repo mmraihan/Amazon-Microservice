@@ -1,4 +1,5 @@
 using Amazon.Services.AuthAPI.Data;
+using Amazon.Services.AuthAPI.Models;
 using Microsoft.AspNetCore.Identity;
 using Microsoft.EntityFrameworkCore;
 
@@ -13,7 +14,7 @@ builder.Services.AddDbContext<AppDbContext>(option =>
 
 //-------- .NET Identity----------
 
-builder.Services.AddIdentity<IdentityUser, IdentityRole>().AddEntityFrameworkStores<AppDbContext>()
+builder.Services.AddIdentity<ApplicationUser, IdentityRole>().AddEntityFrameworkStores<AppDbContext>()
     .AddDefaultTokenProviders();
 
 //IMapper mapper = MappingConfig.RegisterMaps().CreateMapper();
