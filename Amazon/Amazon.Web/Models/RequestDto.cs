@@ -1,6 +1,4 @@
-﻿using System.Net.Mime;
-using System.Security.AccessControl;
-using static Amazon.Web.Utility.SD;
+﻿using static Amazon.Web.Utility.SD;
 
 namespace Amazon.Web.Models
 {
