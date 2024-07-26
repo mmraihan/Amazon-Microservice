@@ -12,6 +12,7 @@ builder.Services.AddHttpContextAccessor();
 builder.Services.AddHttpClient();
 builder.Services.AddHttpClient<IBaseService, BaseService>();
 builder.Services.AddHttpClient<ICouponService, CouponService>();
+builder.Services.AddHttpClient<IAuthService, AuthService>();
 
 SD.CouponAPIBase = builder.Configuration["ServiceUrls:CouponAPI"];
 SD.CouponAPIBase = builder.Configuration["ServiceUrls:AuthAPI"];
@@ -19,6 +20,7 @@ SD.CouponAPIBase = builder.Configuration["ServiceUrls:AuthAPI"];
 builder.Services.AddScoped<IBaseService, BaseService>();
 
 builder.Services.AddScoped<ICouponService, CouponService>();
+builder.Services.AddScoped<IAuthService, AuthService>();
 
 
 #endregion
