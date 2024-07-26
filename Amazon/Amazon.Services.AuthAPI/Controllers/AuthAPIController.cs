@@ -43,5 +43,18 @@ namespace Amazon.Services.AuthAPI.Controllers
             _response.Result = loginResponse;
             return Ok(_response);
         }
+
+        [HttpPost("assignRole")]
+        public async Task<IActionResult> Login([FromBody] RegistrationRequestDto registrationRequestDto)
+        {
+            var assignRole = await _authService.AssignRole(registrationRequestDto.Email, registrationRequestDto.Role.ToUpper());
+            if (!assignRole)
+            {
+                _response.IsSuccess = false;
+                _response.Message = "Failed to assign role.";
+                return BadRequest(_response);
+            }
+            return Ok(_response);
+        }
     }
 }
