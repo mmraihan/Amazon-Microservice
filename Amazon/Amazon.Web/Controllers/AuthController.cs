@@ -10,10 +10,12 @@ namespace Amazon.Web.Controllers
     public class AuthController : Controller
     {
         private readonly IAuthService _authService;
+        private readonly ITokenProvider _tokenProvider;
 
-        public AuthController(IAuthService authService)
+        public AuthController(IAuthService authService, ITokenProvider tokenProvider)
         {
             _authService = authService;
+            _tokenProvider = tokenProvider;
         }
 
         [HttpGet]
@@ -32,6 +34,8 @@ namespace Amazon.Web.Controllers
             {
                 LoginResponseDto loginResponseDto =
                     JsonConvert.DeserializeObject<LoginResponseDto>(Convert.ToString(responseDto.Result));
+
+                _tokenProvider.SetToken(loginResponseDto.Token);
 
                 return RedirectToAction("Index", "Home");
             }
