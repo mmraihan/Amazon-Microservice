@@ -31,7 +31,9 @@ namespace Amazon.Services.AuthAPI.Service
                 return new LoginResponseDto() { User = null, Token = string.Empty };
             }
 
-            var token = _jwtTokenGenerator.GenerateToken(user);
+            //if user found, Generate JWT
+            var roles = await _userManager.GetRolesAsync(user);
+            var token = _jwtTokenGenerator.GenerateToken(user, roles);
 
             UserDto userDto = new()
             {

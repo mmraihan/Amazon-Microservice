@@ -1,4 +1,6 @@
 using Amazon.Web.Models;
+using Amazon.Web.Utility;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 using System.Diagnostics;
 
@@ -18,6 +20,7 @@ namespace Amazon.Web.Controllers
             return View();
         }
 
+        [Authorize(Roles =SD.RoleAdmin)]
         public IActionResult Privacy()
         {
             return View();
