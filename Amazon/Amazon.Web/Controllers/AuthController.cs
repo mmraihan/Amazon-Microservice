@@ -47,7 +47,7 @@ namespace Amazon.Web.Controllers
             }
             else
             {
-                ModelState.AddModelError("CustomError", responseDto.Message);
+                TempData["error"] = responseDto.Message;
                 return View(loginRequestDto);
             }
         }
@@ -83,6 +83,10 @@ namespace Amazon.Web.Controllers
                     TempData["success"] = "Registration Successfull";
                     return RedirectToAction(nameof(Login));
                 }
+            }
+            else
+            {
+                TempData["error"] = result.Message;
             }
 
 
