@@ -1,4 +1,5 @@
 using Amazon.Services.CouponAPI.Data;
+using Amazon.Services.CouponAPI.Extensions;
 using Amazon.Services.CouponAPI.Helpers;
 using AutoMapper;
 using Microsoft.AspNetCore.Authentication.JwtBearer;
@@ -60,31 +61,7 @@ builder.Services.AddSwaggerGen(option =>
 
 #region JWT Validate
 
-var settingsSection = builder.Configuration.GetSection("ApiSettings");
-
-var secret = settingsSection.GetValue<string>("Secret");
-var issuer = settingsSection.GetValue<string>("Issuer");
-var audience = settingsSection.GetValue<string>("Audience");
-
-var key = Encoding.ASCII.GetBytes(secret);
-
-builder.Services.AddAuthentication(x =>
-{
-    x.DefaultAuthenticateScheme = JwtBearerDefaults.AuthenticationScheme;
-    x.DefaultChallengeScheme = JwtBearerDefaults.AuthenticationScheme;
-}).AddJwtBearer(x =>
-{
-    x.TokenValidationParameters = new TokenValidationParameters
-    {
-        ValidateIssuerSigningKey = true,
-        IssuerSigningKey = new SymmetricSecurityKey(key),
-        ValidateIssuer = true,
-        ValidIssuer = issuer,
-        ValidAudience = audience,
-        ValidateAudience = true,
-    };
-});
-
+builder.AddAppAuthetication(); // Extrension method
 builder.Services.AddAuthorization();
 
 #endregion
