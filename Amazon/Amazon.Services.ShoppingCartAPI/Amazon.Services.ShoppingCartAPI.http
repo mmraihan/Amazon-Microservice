@@ -1,0 +1,6 @@
+@Amazon.Services.ShoppingCartAPI_HostAddress = http://localhost:5105
+
+GET {{Amazon.Services.ShoppingCartAPI_HostAddress}}/weatherforecast/
+Accept: application/json
+
+###
