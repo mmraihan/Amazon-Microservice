@@ -1,4 +1,6 @@
-﻿namespace Amazon.Web.Models
+﻿using System.ComponentModel.DataAnnotations;
+
+namespace Amazon.Web.Models
 {
     public class ProductDto
     {
@@ -8,6 +10,8 @@
         public string Description { get; set; }
         public string CategoryName { get; set; }
         public string ImageUrl { get; set; }
-      
+        [Range(0,100)]
+        public int Count { get; set; } = 1;
+
     }
 }
