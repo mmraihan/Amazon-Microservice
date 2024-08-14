@@ -1,6 +1,8 @@
 using Amazon.Services.ShoppingCartAPI.Data;
 using Amazon.Services.ShoppingCartAPI.Extensions;
 using Amazon.Services.ShoppingCartAPI.Helpers;
+using Amazon.Services.ShoppingCartAPI.Service;
+using Amazon.Services.ShoppingCartAPI.Service.IService;
 using AutoMapper;
 using Microsoft.AspNetCore.Authentication.JwtBearer;
 using Microsoft.EntityFrameworkCore;
@@ -20,6 +22,7 @@ builder.Services.AddDbContext<AppDbContext>(option =>
 IMapper mapper = MappingConfig.RegisterMaps().CreateMapper();
 builder.Services.AddSingleton(mapper);
 builder.Services.AddAutoMapper(Assembly.GetEntryAssembly());
+builder.Services.AddScoped<IProductService, ProductService>();
 
 #endregion
 
@@ -61,6 +64,13 @@ builder.Services.AddSwaggerGen(option =>
 
 builder.AddAppAuthetication(); // Extension method
 builder.Services.AddAuthorization();
+
+#endregion
+
+
+#region Configure Http for communicate to other service 
+
+builder.Services.AddHttpClient("Product", u => u.BaseAddress = new Uri(builder.Configuration["ServiceUrls:ProductAPI"]));
 
 #endregion
 

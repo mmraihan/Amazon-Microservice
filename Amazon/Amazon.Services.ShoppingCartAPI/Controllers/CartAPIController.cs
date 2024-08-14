@@ -1,6 +1,7 @@
 ﻿using Amazon.Services.ShoppingCartAPI.Data;
 using Amazon.Services.ShoppingCartAPI.Dtos;
 using Amazon.Services.ShoppingCartAPI.Models;
+using Amazon.Services.ShoppingCartAPI.Service.IService;
 using AutoMapper;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
@@ -15,12 +16,14 @@ namespace Amazon.Services.ShoppingCartAPI.Controllers
         private ResponseDto _response;
         private IMapper _mapper;
         private readonly AppDbContext _db;
- 
-        public CartAPIController(AppDbContext db,IMapper mapper)
+        private readonly IProductService _productService;
+
+        public CartAPIController(AppDbContext db, IMapper mapper, IProductService productService)
         {
             _db = db;
             this._response = new ResponseDto();
             _mapper = mapper;
+            _productService = productService;
         }
 
         [HttpGet("GetCart/{userId}")]
@@ -34,9 +37,12 @@ namespace Amazon.Services.ShoppingCartAPI.Controllers
                 };
                 cart.CartDetails = _mapper.Map<IEnumerable<CartDetailsDto>>(_db.CartDetails
                     .Where(u => u.CartHeaderId == cart.CartHeader.CartHeaderId));
+
+                var productDtos = await _productService.GetProducts(); //Other service
                
                 foreach (var item in cart.CartDetails)
-                {                  
+                {
+                    item.Product = productDtos.FirstOrDefault(u => u.ProductId == item.ProductId);               
                     cart.CartHeader.CartTotal += (item.Count * item.Product.Price);
                 }
               
