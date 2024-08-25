@@ -1,13 +1,31 @@
 ﻿using Amazon.Services.ShoppingCartAPI.Dtos;
 using Amazon.Services.ShoppingCartAPI.Service.IService;
+using Newtonsoft.Json;
 
 namespace Amazon.Services.ShoppingCartAPI.Service
 {
     public class CouponService : ICouponService
     {
-        public Task<CouponDto> GetCoupon(string couponCode)
+        private readonly IHttpClientFactory _httpClientFactory;
+
+        public CouponService(IHttpClientFactory httpClientFactory)
         {
-            throw new NotImplementedException();
+            _httpClientFactory = httpClientFactory;
+        }
+
+        public async Task<CouponDto> GetCoupon(string couponCode)
+        {
+            var client = _httpClientFactory.CreateClient("Coupon");
+            var response = await client.GetAsync($"/api/coupon/GetByCode/{couponCode}");
+            var apiContent = await response.Content.ReadAsStringAsync();
+            var resp = JsonConvert.DeserializeObject<ResponseDto>(apiContent);
+
+            if (resp.IsSuccess)
+            {
+                return JsonConvert.DeserializeObject<CouponDto>(Convert.ToString(resp.Result));
+
+            }
+            return new CouponDto();
         }
     }
 }

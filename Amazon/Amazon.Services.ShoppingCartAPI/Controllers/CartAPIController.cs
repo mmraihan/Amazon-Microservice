@@ -17,13 +17,15 @@ namespace Amazon.Services.ShoppingCartAPI.Controllers
         private IMapper _mapper;
         private readonly AppDbContext _db;
         private readonly IProductService _productService;
+        private readonly ICouponService _couponService;
 
-        public CartAPIController(AppDbContext db, IMapper mapper, IProductService productService)
+        public CartAPIController(AppDbContext db, IMapper mapper, IProductService productService, ICouponService couponService)
         {
             _db = db;
             this._response = new ResponseDto();
             _mapper = mapper;
             _productService = productService;
+            _couponService = couponService;
         }
 
         [HttpGet("GetCart/{userId}")]
@@ -45,7 +47,25 @@ namespace Amazon.Services.ShoppingCartAPI.Controllers
                     item.Product = productDtos.FirstOrDefault(u => u.ProductId == item.ProductId);               
                     cart.CartHeader.CartTotal += (item.Count * item.Product.Price);
                 }
-              
+
+                #region Other service consume
+
+                //apply coupon if available
+
+                if (!string.IsNullOrEmpty(cart.CartHeader.CouponCode))
+                {
+                    var coupon = await _couponService.GetCoupon(cart.CartHeader.CouponCode);
+                    if (coupon!=null && cart.CartHeader.CartTotal>coupon.MinAmount)
+                    {
+                        cart.CartHeader.CartTotal -= coupon.DiscountAmount;
+                        cart.CartHeader.Discount = coupon.DiscountAmount;
+                    }
+                }
+
+
+                #endregion
+
+
                 _response.Result = cart;
             }
             catch (Exception ex)
